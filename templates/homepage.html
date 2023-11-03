@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}home page{% endblock %}
+
+{% block body %}
+<style>
+  body{
+    background-color: #140958;
+  }
+  h1{
+    color:white;
+    font-family: fantasy;
+    background-color: #140958;
+    text-align: center;
+  }
+  h2{
+    text-align: center;
+     color:#D5AF34;
+     font-family: fantasy;
+  }
+  p{
+    text-align: center;
+    color:white;
+    font-family: monospace;
+  }
+
+  </style>
+<h1>Lab Reminder</h1>
+<form action="/patients" method="POST">
+
+    <h2>New Patient:</h2>
+   <p> Name:<input id="textbox" type="text" name="name">
+   </p><br>
+   <p>Email:<input id="textbox" type="text" name="email">
+   </p> <br>
+    <p>Date to get labs done by:<input id="textbox" type ="datetime" name="date_to_send">
+    </p><br>
+    
+
+    <p><input type="submit"></p>
+  </form>
+  
+  <br>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}All Users{% endblock %}
+
+{% block body %}
+<h1>All Past Patients</h1>
+<style>
+  body{
+    background-color: #140958;
+  }
+  h1{
+    color:white;
+    font-family: fantasy;
+    background-color: #140958;
+    text-align: center;
+  }
+  h2{
+    text-align: center;
+     color:#D5AF34;
+     font-family: fantasy;
+  }
+  p{
+    text-align: center;
+    color:white;
+    font-family: monospace;
+  }
+
+  </style>
+
+<div>
+  <input type="text" id="search" onkeyup='tableSearch()' placeholder="Name">
+
+  <br>
+  <style>
+      table, th, td {
+      border:1px solid black;
+    }
+    </style>
+  
+  <table style="width:100%" id="patient_info" data-filter-control="true" data-show-search-clear-button="true">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Date</th>
+      <th>Message</th>
+    </tr>
+  
+    {%for schedule in schedules%}
+    <tr>
+      <td><a href ="/patient/{{schedule.patient.patient_id}}">{{ schedule.patient.name }}</a></td>
+      <td>{{schedule.patient.email}}</td>
+      <td>{{schedule.date_to_send}}</td>
+      <td>{{schedule.message}}</td>
+      <td><button id="{{schedule.schedule_id}}">send</button></td>
+    </tr>
+      {%endfor%}
+  </table>
+</div>
+<script src="/static/sendMessage.js"></script>
+<script src="/static/search.js"></script>
+{% endblock %}

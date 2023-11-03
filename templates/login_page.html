@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<!-- <head>  <link rel="stylesheet"
+  href="/project/static/css/style.css"></head> -->
+<style>
+body{
+  background-color: #140958;
+}
+h1{
+  color:white;
+  font-family: fantasy;
+  background-color: #140958;
+  text-align: center;
+}
+h2{
+  text-align: center;
+   color:#D5AF34;
+   font-family: fantasy;
+}
+p{
+  text-align: center;
+  color:white;
+  font-family: monospace;
+}
+</style>
+  <h1>Welcome to Lab Reminders!</h1>
+  
+
+  <h2>Create an Account</h2>
+  <form action="/users" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+  <h2>Log In</h2>
+  <form action="/login" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+{% endblock %}
