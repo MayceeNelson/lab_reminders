@@ -37,7 +37,7 @@ def process_login():
             
         return redirect("/")
     elif request.method =="GET":
-        return render_template("homepage.html")
+        return render_template("login_page.html")
 
 
 
@@ -50,14 +50,13 @@ def register_user():
     
     if crud.get_user_by_email(email):
 
-        flash("Can't use that email to create account! Try again ya dingus")
+        flash("Can't use that email to create account! Try again")
         
     else:    
 
         user = crud.create_user(email, password)
         db.session.add(user)
         db.session.commit()
-        flash("Account created successfully! you can now login")
         
     return redirect("/login")
 
@@ -85,11 +84,11 @@ def register_patient():
         user = crud.get_user_by_email(email)
 
         created_patient = crud.new_patient(phone_num,name,schedule,patient_email)
-        patient_schedule = crud.new_schedule("get your lab work done",date_to_send, date_to_remind, user,created_patient)
+        patient_schedule = crud.new_schedule("This is Canon Professional Wellness Clinic reminding you of your blood work that needs completed tomorrow as discussed at your last visit with your primary care provider. ",date_to_send, date_to_remind, user,created_patient)
         db.session.add(created_patient)
         db.session.add(patient_schedule)
         db.session.commit()
-        flash("Patient created successfully, you can now login.")
+        
         
         return redirect("/patients")
 
